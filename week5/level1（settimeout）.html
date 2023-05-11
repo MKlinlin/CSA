@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      transition: all 1s ease;
+      -webkit-transition: all 1s ease;
+    }
+
+    .box1 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: red;
+    }
+
+    .box2 {
+      position: absolute;
+      top: 100px;
+      left: 0;
+      background-color: blue;
+    }
+
+    .box3 {
+      position: absolute;
+      top: 200px;
+      left: 0;
+      background-color: yellow;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="box1"></div>
+  <div class="box2"></div>
+  <div class="box3"></div>
+  <script>
+    setTimeout(function() {
+      // 添加 transform 属性来改变 left 值
+      document.getElementsByClassName("box1")[0].style.transform = "translateX(200px)";
+    }, 0);
+
+    setTimeout(function() {
+      document.getElementsByClassName("box2")[0].style.transform = "translateX(200px)";
+    }, 1000);
+
+    setTimeout(function() {
+      document.getElementsByClassName("box3")[0].style.transform = "translateX(200px)";
+    }, 2000);
+  </script>
+</body>
+</html>

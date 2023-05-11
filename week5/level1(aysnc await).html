@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    /* 添加 transition 属性 */
+    div {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      transition: all 1s ease;
+      -webkit-transition: all 1s ease;
+    }
+
+    .box1 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: red;
+    }
+
+    .box2 {
+      position: absolute;
+      top: 100px;
+      left: 0;
+      background-color: blue;
+    }
+
+    .box3 {
+      position: absolute;
+      top: 200px;
+      left: 0;
+      background-color: yellow;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="box1"></div>
+  <div class="box2"></div>
+  <div class="box3"></div>
+  <script>
+    const moveElement = async (element, distance) => {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      element.style.transform = `translateX(${distance}px)`;
+    };
+
+    const box1 = document.getElementsByClassName("box1")[0];
+    const box2 = document.getElementsByClassName("box2")[0];
+    const box3 = document.getElementsByClassName("box3")[0];
+
+    // 使用 async/await 方法
+    const move = async () => {
+      await moveElement(box1, 200);
+      await moveElement(box2, 200);
+      await moveElement(box3, 200);
+    };
+    move();
+  </script>
+</body>
+</html>
