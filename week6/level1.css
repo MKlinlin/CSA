@@ -1,0 +1,63 @@
+
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    h1 {
+        text-align: center;
+        background-color: #007399;
+        height: 100px;
+        line-height: 100px;
+    }
+
+    #input-item {
+        padding: 10px;
+        margin: 10px;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px #ccc;
+    }
+
+    #add-btn {
+        padding: 10px;
+        margin: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007399;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    #item-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        margin: 15px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px #ccc;
+        background-color: #f2f2f2f4;
+    }
+
+    .delete-btn {
+        margin-left: auto;
+        padding: 5px;
+        border: none;
+        border-radius: 5px;
+        background-color: #ff6666;
+        color: #fff;
+    }
+
+    .box {
+        text-align: center;
+    }
