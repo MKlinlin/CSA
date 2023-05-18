@@ -13,7 +13,7 @@ addBtn.addEventListener("click", () => {
     item.className = "item";
     item.innerHTML = `
       <span>${inputItem.value}</span>
-      <button class="delete-btn">删除</button>
+      <button class="delete-btn">X</button>
     `;
     itemList.appendChild(item);
     inputItem.value = "";
