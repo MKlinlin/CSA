@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>To do List</title>
+<style>
+* {
+padding: 0;
+margin: 0;
+}
+
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    h1 {
+        text-align: center;
+        background-color: #007399;
+        height: 50px;
+        line-height: 50px;
+        font-size: 20px;
+        color: #fff;
+    }
+
+    #input-item {
+        padding: 8px;
+        width: 60%;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px #ccc;
+        font-size: 16px;
+        margin-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+    #add-btn {
+        padding: 8px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007399;
+        color: #fff;
+        cursor: pointer;
+        font-size: 16px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #item-list {
+        padding: 0;
+        margin: 0;
+    }
+
+    .item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        margin: 15px 10px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px #ccc;
+        background-color: #f2f2f2f4;
+        font-size: 16px;
+    }
+
+    .delete-btn {
+        margin-left: auto;
+        padding: 5px;
+        border: none;
+        border-radius: 5px;
+        background-color: #ff6666;
+        color: #fff;
+        font-size: 14px;
+    }
+
+    .box {
+        text-align: center;
+        margin: 20px;
+    }
+</style>
+</head>
+<body>
+<h1>To do List</h1>
+<div class="box">
+<input type="text" placeholder="添加新事项" id="input-item">
+<button id="add-btn">添加</button>
+</div>
+
+<ul id="item-list">
+</ul>
+
+<script src="level1.js"></script>
+</body>
+</html>
