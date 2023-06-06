@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>推荐歌单</title>
+    <style>
+        h1{
+             text-align: center;
+        }
+        #playlist {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .item {
+            width: calc(25% - 10px);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .item img {
+            width: 80%;
+            height: auto;
+        }
+        .item p {
+            margin: 10px 0 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body onload="showPlaylist()">
+    <h1>推荐歌单</h1>
+    <ul id="playlist"></ul>
+</body>
+<script>
+function showPlaylist() {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(xhr.responseText);
+            var data = JSON.parse(xhr.responseText);
+            var playlist = document.getElementById("playlist");
+            playlist.innerHTML = "";
+            for (var i = 0; i < data.result.length; i++) {
+                var li = document.createElement("li");
+                li.className = "item";
+                var img = document.createElement("img");
+                img.src = data.result[i].picUrl;
+                li.appendChild(img);
+                var text = document.createTextNode(data.result[i].name);
+                var p = document.createElement("p");
+                p.appendChild(text);
+                li.appendChild(p);
+                playlist.appendChild(li);
+            }
+        } else if (xhr.readyState === 4) {
+            console.error(xhr.responseText);
+        }
+    };
+    xhr.open("GET", "http://cloud-music.pl-fe.cn/personalized?limit=8", true);
+    xhr.send();
+}
+</script>
+</html>

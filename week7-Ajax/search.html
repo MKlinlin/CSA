@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>歌曲搜索</title>
+</head>
+<body>
+  <h1>歌曲搜索</h1>
+  <form id="search-form">
+    <label for="keywords">搜索关键词：</label>
+    <input type="text" id="keywords" name="keywords">
+    <input type="submit" value="搜索">
+  </form>
+  <ul id="result-list"></ul>
+
+  <script>// 获取 DOM 元素
+    var form = document.getElementById('search-form');
+    var input = document.getElementById('keywords');
+    var resultList = document.getElementById('result-list');
+
+    // 添加表单提交事件监听器
+    form.addEventListener('submit', function(event) {
+      // 阻止表单默认提交行为
+      event.preventDefault();
+
+      // 获取搜索关键词
+      var keywords = input.value.trim();
+      if (keywords === '') {
+        alert('请输入搜索关键词！');
+        return;
+      }
+
+      // 发送 AJAX 请求
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'http://cloud-music.pl-fe.cn/cloudsearch?keywords=' + encodeURIComponent(keywords));
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          // 解析响应数据
+          var data = JSON.parse(xhr.responseText);
+          if (data.code === 200) {
+            // 清空结果列表
+            resultList.innerHTML = '';
+
+            // 遍历搜索结果并添加到结果列表中
+            data.result.songs.forEach(function(song) {
+              var li = document.createElement('li');
+              var link = document.createElement('a');
+              var artistName = song.artists && song.artists.length > 0 ? song.artists[0].name : '';
+              link.textContent = song.name + ' - ' + artistName;
+              link.href = '/song?url=' + encodeURIComponent(song.id);
+              li.appendChild(link);
+              resultList.appendChild(li);
+            });
+          } else {
+            alert('搜索失败：' + data.msg);
+          }
+        } else {
+          alert('搜索失败：' + xhr.statusText);
+        }
+      };
+      xhr.onerror = function() {
+        alert('搜索失败：网络错误！');
+      };
+      xhr.send();
+    });
+  </script>
+</body>
+</html>
